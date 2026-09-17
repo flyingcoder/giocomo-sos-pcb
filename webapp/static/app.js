@@ -5,7 +5,7 @@
   var content = document.getElementById("content");
   var navEl = document.getElementById("nav");
 
-  var GROUP_ORDER = ["Overview", "Analysis", "Diagrams", "Source Data", "Screenshots", "Simulation"];
+  var GROUP_ORDER = ["Diagrams", "Analysis", "Source Data", "Screenshots", "Simulation"];
 
   var items = [];
   var sourcePathToRoute = {};

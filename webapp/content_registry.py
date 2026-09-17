@@ -13,12 +13,12 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = {
     "overview": {
         "title": "Overview",
-        "group": "Overview",
+        "group": "Analysis",
         "path": ROOT / "analysis" / "README.md",
     },
     "feedback": {
         "title": "Design Feedback",
-        "group": "Overview",
+        "group": "Analysis",
         "path": ROOT / "DESIGN_FEEDBACK.md",
     },
     "inventory": {
