@@ -523,10 +523,10 @@
   // ---------- Router ----------
 
   function route() {
-    var hash = location.hash.replace(/^#/, "") || "doc:overview";
+    var hash = location.hash.replace(/^#/, "") || "diagrams:diagrams";
     var item = itemsByRoute[hash];
     if (!item) {
-      hash = "doc:overview";
+      hash = "diagrams:diagrams";
       item = itemsByRoute[hash];
     }
     setActiveNav(hash);
