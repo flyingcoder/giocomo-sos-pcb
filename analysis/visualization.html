@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giacomo — PCB Visualization</title>
+<style>
+  :root{
+    --bg:#F3F5F0;
+    --surface:#FFFFFF;
+    --ink:#16201A;
+    --ink-soft:#4B564E;
+    --hairline:#C7D0C5;
+    --hairline-strong:#9FAC9A;
+
+    --wire:#1E7A46;
+    --component:#A63A2E;
+    --net:#1D5C9E;
+    --flag:#C23B72;
+
+    --lb-bg:#FDFDFB;
+    --lb-ink:#16201A;
+
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#101512;
+      --surface:#1A211D;
+      --ink:#E7EEE8;
+      --ink-soft:#A9B6AC;
+      --hairline:#2C362F;
+      --hairline-strong:#3C4A40;
+
+      --wire:#49C286;
+      --component:#E2786A;
+      --net:#79B7F2;
+      --flag:#F27FAE;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#101512; --surface:#1A211D; --ink:#E7EEE8; --ink-soft:#A9B6AC;
+    --hairline:#2C362F; --hairline-strong:#3C4A40;
+    --wire:#49C286; --component:#E2786A; --net:#79B7F2; --flag:#F27FAE;
+  }
+  :root[data-theme="light"]{
+    --bg:#F3F5F0; --surface:#FFFFFF; --ink:#16201A; --ink-soft:#4B564E;
+    --hairline:#C7D0C5; --hairline-strong:#9FAC9A;
+    --wire:#1E7A46; --component:#A63A2E; --net:#1D5C9E; --flag:#C23B72;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:
+      radial-gradient(var(--hairline) 1px, transparent 1px) 0 0/22px 22px,
+      var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    max-width:920px;
+    margin:0 auto;
+    padding:2.5rem 1.25rem 5rem;
+  }
+
+  .titleblock{
+    background:var(--surface);
+    border:1px solid var(--component);
+    border-left-width:6px;
+    padding:1.25rem 1.5rem;
+    margin-bottom:1.75rem;
+  }
+  .titleblock .eyebrow{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--component);
+  }
+  .titleblock h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(1.6rem, 1.3rem + 1.2vw, 2.3rem);
+    margin:0.2rem 0 0.35rem;
+    text-wrap:balance;
+  }
+  .titleblock p.sub{
+    margin:0 0 1rem;
+    color:var(--ink-soft);
+    max-width:62ch;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.4rem 1.4rem;
+    border-top:1px solid var(--hairline);
+    padding-top:0.75rem;
+    font-family:var(--mono);
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+  .meta-row b{ color:var(--ink); font-weight:600; }
+
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.6rem 1.4rem;
+    background:var(--surface);
+    border:1px solid var(--hairline);
+    padding:0.75rem 1.1rem;
+    margin-bottom:2.25rem;
+    font-family:var(--mono);
+    font-size:0.76rem;
+  }
+  .legend span{ display:inline-flex; align-items:center; gap:0.45rem; color:var(--ink-soft); }
+  .swatch{ width:0.7rem; height:0.7rem; border-radius:2px; flex:none; }
+
+  .sheet{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--hairline-strong);
+    padding:1.6rem 1.6rem 1.4rem;
+    margin-bottom:2rem;
+  }
+  .sheet::before{
+    content:attr(data-sheet);
+    position:absolute;
+    top:-1px; right:-1px;
+    background:var(--component);
+    color:#fff;
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    padding:0.28rem 0.6rem;
+  }
+  .sheet h2{
+    font-family:var(--serif);
+    font-size:1.35rem;
+    margin:0 0 0.3rem;
+    padding-right:6.5rem;
+    text-wrap:balance;
+  }
+  .sheet .caption{
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    margin:0 0 1.1rem;
+    max-width:68ch;
+  }
+
+  .lightbox{
+    background:var(--lb-bg);
+    border:1px solid var(--hairline-strong);
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,0.02);
+    padding:1rem;
+    overflow-x:auto;
+  }
+  .lightbox pre.mermaid{ margin:0; }
+
+  .note{
+    border-left:3px solid var(--flag);
+    background:color-mix(in srgb, var(--flag) 8%, var(--surface));
+    padding:0.7rem 0.9rem;
+    font-size:0.9rem;
+    margin-top:1rem;
+  }
+  .note b{ color:var(--flag); font-family:var(--mono); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:0.25rem; }
+
+  code, .dsg{
+    font-family:var(--mono);
+    font-size:0.88em;
+    background:color-mix(in srgb, var(--net) 10%, transparent);
+    color:var(--net);
+    padding:0.05em 0.35em;
+    border-radius:3px;
+  }
+
+  footer{
+    font-family:var(--mono);
+    font-size:0.75rem;
+    color:var(--ink-soft);
+    border-top:1px solid var(--hairline);
+    padding-top:1rem;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:0.5rem;
+  }
+
+  @media (max-width:640px){
+    .sheet::before{ position:static; display:inline-block; margin-bottom:0.6rem; }
+    .sheet h2{ padding-right:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="titleblock">
+    <div class="eyebrow">Hardware Analysis — Visualization</div>
+    <h1>Giacomo — SOS Panic-Button Wearable</h1>
+    <p class="sub">Diagrams derived from <code class="dsg">giacomo-schematic.json</code> and <code class="dsg">giacomo-pcb-layout.json</code>, cross-checked against the four schematic screenshots. See the <code class="dsg">analysis/</code> markdown files for full narrative detail — this page is the diagram companion.</p>
+    <div class="meta-row">
+      <span>PROJECT: <b>pcb_giacomo</b></span>
+      <span>EDITOR: <b>EasyEDA 6.5.51</b></span>
+      <span>SOURCE UPDATED: <b>2026-09-17</b></span>
+      <span>SHEETS: <b>5</b></span>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><i class="swatch" style="background:var(--wire)"></i>wire green — confirmed signal / data flow</span>
+    <span><i class="swatch" style="background:var(--component)"></i>component red — hardware block</span>
+    <span><i class="swatch" style="background:var(--net)"></i>net blue — net name / reference designator</span>
+    <span><i class="swatch" style="background:var(--flag)"></i>flag magenta — incomplete / needs attention</span>
+  </div>
+
+  <!-- SHEET 1 -->
+  <section class="sheet" data-sheet="SHEET 1 / 5 — SYSTEM">
+    <h2>Subsystem &amp; signal architecture</h2>
+    <p class="caption">Every functional block on the board, and the bus or net family that connects it back to the ESP32-S3 core.</p>
+    <div class="lightbox">
+<pre class="mermaid">
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#FDFDFB','primaryTextColor':'#16201A','primaryBorderColor':'#A63A2E',
+  'lineColor':'#1E7A46','tertiaryColor':'#F3F5F0','clusterBkg':'#EEF3EC','clusterBorder':'#1D5C9E',
+  'fontFamily':'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace','fontSize':'13px'
+}}}%%
+flowchart TB
+  subgraph CORE["CORE MCU"]
+    ESP32["ESP32-S3-WROOM-1 (N16R8)<br/>U2"]
+  end
+  subgraph CELL["CELLULAR"]
+    A7670["A7670C-LANS · 4G LTE modem<br/>U1"]
+    SIM(["SMN-303 nano-SIM socket<br/>CARD1"])
+    ANT1[/"U.FL antenna feed<br/>LTE / GNSS / BT"/]
+  end
+  subgraph LOC["LOCATION"]
+    GPS["L76KB-A58 GNSS<br/>U3"]
+  end
+  subgraph AUD["AUDIO"]
+    CODEC["ES8311 codec<br/>U4"]
+    MIC(["3.5mm mic jack — CN5"])
+    SPK(["3.5mm audio jack — CN1"])
+  end
+  subgraph SNS["MOTION SENSING"]
+    IMU["LSM6DS3TR-C IMU<br/>U7"]
+  end
+  subgraph HID["ALERT &amp; INPUT"]
+    BTN{{"6 buttons:<br/>PWR · RST · BOOT · AI · Intercom · Cancel"}}
+    LED[["4 status LEDs:<br/>red · blue · green · white"]]
+    BUZ(("Buzzer, 2700Hz"))
+    VIB(("Vibration motor"))
+  end
+  subgraph DBG["USB / DEBUG"]
+    CH340["CH340C USB-UART<br/>U10"]
+    USBDBG(["USB-C debug port"])
+  end
+
+  ESP32 <-->|"UART: LTE_TX / LTE_RX"| A7670
+  A7670 --- SIM
+  A7670 -.->|antenna feed| ANT1
+  ESP32 <-->|"UART: GNSS_TX / GNSS_RX"| GPS
+  ESP32 <-->|"I2S audio + I2C control"| CODEC
+  CODEC --- MIC
+  CODEC --- SPK
+  ESP32 <-->|"I2C: IMU_SDA / IMU_SCL + INT"| IMU
+  BTN -->|"GPIO: BTN_PWR / BTN_AI / BTN_RIDER / BTN_CANCEL"| ESP32
+  ESP32 -->|GPIO| LED
+  ESP32 -->|"PWM: BUZZER_PWM"| BUZ
+  ESP32 -->|"GPIO → Q6 driver"| VIB
+  USBDBG --> CH340
+  CH340 <-->|"UART0: UART_LOG_TX / RX"| ESP32
+</pre>
+    </div>
+  </section>
+
+  <!-- SHEET 2 -->
+  <section class="sheet" data-sheet="SHEET 2 / 5 — POWER">
+    <h2>Power distribution</h2>
+    <p class="caption">Two independent battery paths: a regulated 3V3 logic rail, and a raw, unregulated feed reserved for the cellular modem's transmit-current spikes.</p>
+    <div class="lightbox">
+<pre class="mermaid">
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#FDFDFB','primaryTextColor':'#16201A','primaryBorderColor':'#A63A2E',
+  'lineColor':'#1E7A46','tertiaryColor':'#F3F5F0','clusterBkg':'#EEF3EC','clusterBorder':'#1D5C9E',
+  'fontFamily':'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace','fontSize':'13px'
+}}}%%
+flowchart LR
+  USBC1(["USB-C port 1 — USBC1"]) -->|"VBUS 5V"| IP5306["IP5306<br/>charger + boost · U5"]
+  BATT_MAIN(["Main battery — CN2"]) <--> IP5306
+  IP5306 -->|"VOUT → VBUS_5V"| AP2112["AP2112K-3.3 LDO<br/>U6"]
+  AP2112 -->|"3V3"| RAIL{{"3V3 logic rail"}}
+  RAIL --> ESP32b["ESP32-S3"]
+  RAIL --> IMUb["LSM6DS3TR-C"]
+  RAIL --> CODECb["ES8311"]
+  RAIL --> LOGIC(("pull-ups / logic"))
+  BATT_GSM(["Cellular battery — CN4"]) ==>|"BATT_LTE_RAW — unregulated"| A7670b["A7670C-LANS"]
+  USBC2b(["USB-C port 2 — USBC2"]) -.->|"native USB D+/D-"| ESP32b
+</pre>
+    </div>
+    <div class="note"><b>Design note</b>The modem's battery feed (<code class="dsg">BATT_LTE_RAW</code>) bypasses the boost/LDO chain entirely — sensible, since the A7670C can pulse 1–2 A during transmit and forcing that through a small LDO would brown out the logic rail.</div>
+  </section>
+
+  <!-- SHEET 3 -->
+  <section class="sheet" data-sheet="SHEET 3 / 5 — BOM">
+    <h2>Component mix</h2>
+    <p class="caption">83 placed component instances across 48 BOM lines, grouped by real function rather than by BOM designator prefix.</p>
+    <div class="lightbox">
+<pre class="mermaid">
+%%{init: {'theme':'base', 'themeVariables': {
+  'pieOuterStrokeWidth':'1px','pieSectionTextColor':'#16201A','pieOpacity':'0.92',
+  'pie1':'#1E7A46','pie2':'#1D5C9E','pie3':'#A63A2E','pie4':'#C23B72',
+  'pie5':'#8A8F5C','pie6':'#5C7A8A','pie7':'#B08A3E','pie8':'#7A5C8A',
+  'pie9':'#4B564E','pie10':'#3E7DB0',
+  'fontFamily':'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace','fontSize':'13px'
+}}}%%
+pie showData title Component mix — 83 placed instances
+  "Capacitors" : 23
+  "Resistors (incl. 5 mis-designated as U11-U15)" : 21
+  "ICs / modules" : 10
+  "Switches" : 7
+  "Connectors (jacks, battery, USB-C, SIM)" : 8
+  "Transistors" : 5
+  "LEDs" : 4
+  "Diodes" : 2
+  "Inductors" : 2
+  "Buzzer" : 1
+</pre>
+    </div>
+    <div class="note"><b>BOM hygiene</b>5 of the 21 real resistors (10kΩ×2, 5.1kΩ×2, 2.2kΩ×1 — the CH340C auto-reset bias network) are designated <code class="dsg">U11–U15</code> instead of an <code class="dsg">R</code>-prefix. Worth renaming before handing the BOM to a pick-and-place house.</div>
+  </section>
+
+  <!-- SHEET 4 -->
+  <section class="sheet" data-sheet="SHEET 4 / 5 — STATUS">
+    <h2>Design pipeline status</h2>
+    <p class="caption">Where <code class="dsg">giacomo-pcb-layout.json</code> actually sits: every part is placed, almost nothing is wired.</p>
+    <div class="lightbox">
+<pre class="mermaid">
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#FDFDFB','primaryTextColor':'#16201A','primaryBorderColor':'#A63A2E',
+  'lineColor':'#1E7A46','tertiaryColor':'#F3F5F0',
+  'fontFamily':'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace','fontSize':'13px'
+}}}%%
+stateDiagram-v2
+  [*] --> SchematicCapture
+  SchematicCapture --> FootprintPlacement
+  FootprintPlacement --> CopperRouting
+  CopperRouting --> DesignRuleCheck
+  DesignRuleCheck --> GerberExport
+  GerberExport --> Fabrication
+
+  SchematicCapture: Schematic capture — done (84 symbols, 266 wires)
+  FootprintPlacement: Footprint placement — done (82 of 83 parts placed)
+  CopperRouting: Copper routing — NOT STARTED (1 track total)
+  DesignRuleCheck: Design rule check — blocked
+  GerberExport: Gerber export — blocked
+  Fabrication: Fabrication-ready — blocked
+
+  classDef done fill:#EAF1EC,stroke:#1E7A46,color:#16201A
+  classDef blocked fill:#FBE8EF,stroke:#C23B72,color:#16201A
+  class SchematicCapture,FootprintPlacement done
+  class CopperRouting,DesignRuleCheck,GerberExport,Fabrication blocked
+</pre>
+    </div>
+    <div class="note"><b>Blocking issue</b>82 footprints are on the board but only <b>1 copper track</b> exists anywhere — no vias, no pours, no net classes. This file is not manufacturable as-is; routing is the entire next phase of work.</div>
+  </section>
+
+  <!-- SHEET 5 -->
+  <section class="sheet" data-sheet="SHEET 5 / 5 — FILES">
+    <h2>Project file relationships</h2>
+    <p class="caption">How the renamed source files and this analysis relate to one another.</p>
+    <div class="lightbox">
+<pre class="mermaid">
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#FDFDFB','primaryTextColor':'#16201A','primaryBorderColor':'#A63A2E',
+  'lineColor':'#1E7A46','tertiaryColor':'#F3F5F0',
+  'fontFamily':'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace','fontSize':'13px'
+}}}%%
+flowchart TB
+  MANIFEST["giacomo-project-manifest.json<br/>project index"] --> SCHEMATIC["giacomo-schematic.json<br/>Sheet_1: symbols, wires, BOM"]
+  MANIFEST --> PCB["giacomo-pcb-layout.json<br/>footprints, layers, DRC"]
+  SCHEMATIC -->|BOM reused by| PCB
+  SCHEMATIC -.->|rendered for readable net names| SHOTS[["4× schematic-view-*.jpeg"]]
+  SHOTS --> ANALYSIS[["analysis/*.md + this page"]]
+  PCB --> ANALYSIS
+  MANIFEST --> ANALYSIS
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <span>Source: EasyEDA project export, last updated 2026-09-17</span>
+    <span>See analysis/README.md for the full written analysis</span>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  function applyMermaidTheme(){
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark'
+      || (!document.documentElement.hasAttribute('data-theme')
+          && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    mermaid.initialize({
+      startOnLoad: true,
+      securityLevel: 'loose',
+      theme: dark ? 'dark' : 'base',
+    });
+  }
+  applyMermaidTheme();
+</script>
+</body>
+</html>
