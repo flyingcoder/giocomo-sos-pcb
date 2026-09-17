@@ -1,0 +1,11 @@
+{
+  "summary": {
+    "en_min": 0.036863539651723405,
+    "io0_min": 0.028333554486498273
+  },
+  "plot_url": "plots/autoreset.png",
+  "overlay": {
+    "autoreset__en": 0.036863539651723405,
+    "autoreset__io0": 0.028333554486498273
+  }
+}

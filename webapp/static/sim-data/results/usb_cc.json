@@ -1,0 +1,10 @@
+{
+  "summary": {
+    "no host attached": 0.0,
+    "host Rp=56k (default 900mA/1.5A source)": 0.4173486088379706,
+    "host Rp=22k (1.5A source)": 0.940959409594096,
+    "host Rp=10k (3A source)": 1.6887417218543046
+  },
+  "plot_url": null,
+  "overlay": {}
+}

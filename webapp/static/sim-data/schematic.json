@@ -1,0 +1,1470 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "group:power_tree",
+        "label": "Power tree",
+        "kind": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__battery",
+        "label": "Battery cell",
+        "kind": "component",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 40,
+        "y": 80
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__U5",
+        "label": "U5 IP5306 boost",
+        "kind": "ic",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 220,
+        "y": 80
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__vbus_5v",
+        "label": "VBUS_5V",
+        "kind": "net",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 400,
+        "y": 80
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__U6",
+        "label": "U6 AP2112K-3.3 LDO",
+        "kind": "ic",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 580,
+        "y": 80
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__3v3",
+        "label": "3V3",
+        "kind": "net",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 760,
+        "y": 80
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__C4",
+        "label": "C4 10uF",
+        "kind": "component",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 350,
+        "y": 180
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__C5",
+        "label": "C5 10uF",
+        "kind": "component",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 410,
+        "y": 180
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__C6",
+        "label": "C6 100nF",
+        "kind": "component",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 500,
+        "y": 180
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__C7",
+        "label": "C7 10uF",
+        "kind": "component",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 760,
+        "y": 180
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__U2",
+        "label": "U2 ESP32-S3 load",
+        "kind": "ic",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 600,
+        "y": 280
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__U3",
+        "label": "U3 GNSS load",
+        "kind": "ic",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 680,
+        "y": 280
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__U4",
+        "label": "U4 audio codec load",
+        "kind": "ic",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 760,
+        "y": 280
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__U7",
+        "label": "U7 IMU load",
+        "kind": "ic",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 840,
+        "y": 280
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__U10",
+        "label": "U10 CH340C load",
+        "kind": "ic",
+        "parent": "group:power_tree"
+      },
+      "position": {
+        "x": 920,
+        "y": 280
+      }
+    },
+    {
+      "data": {
+        "id": "group:modem_burst",
+        "label": "Modem TX burst (VBAT_LTE)",
+        "kind": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__battery",
+        "label": "Battery cell",
+        "kind": "component",
+        "parent": "group:modem_burst"
+      },
+      "position": {
+        "x": 40,
+        "y": 780
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__D2",
+        "label": "D2 1N4148WS",
+        "kind": "component",
+        "parent": "group:modem_burst"
+      },
+      "position": {
+        "x": 220,
+        "y": 780
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__vbat_lte",
+        "label": "VBAT_LTE",
+        "kind": "net",
+        "parent": "group:modem_burst"
+      },
+      "position": {
+        "x": 400,
+        "y": 780
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__C11",
+        "label": "C11 330uF",
+        "kind": "component",
+        "parent": "group:modem_burst"
+      },
+      "position": {
+        "x": 560,
+        "y": 740
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__C12",
+        "label": "C12 100nF",
+        "kind": "component",
+        "parent": "group:modem_burst"
+      },
+      "position": {
+        "x": 560,
+        "y": 820
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__C13",
+        "label": "C13 33pF",
+        "kind": "component",
+        "parent": "group:modem_burst"
+      },
+      "position": {
+        "x": 620,
+        "y": 860
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__idle_load",
+        "label": "A7670C idle load",
+        "kind": "ic",
+        "parent": "group:modem_burst"
+      },
+      "position": {
+        "x": 480,
+        "y": 900
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__burst_load",
+        "label": "A7670C TX burst (pulsed)",
+        "kind": "ic",
+        "parent": "group:modem_burst"
+      },
+      "position": {
+        "x": 480,
+        "y": 970
+      }
+    },
+    {
+      "data": {
+        "id": "group:autoreset",
+        "label": "CH340 auto-reset",
+        "kind": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__3v3",
+        "label": "3V3",
+        "kind": "net",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 40,
+        "y": 1450
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__R4",
+        "label": "R4 10k EN pull-up",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 220,
+        "y": 1420
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__en",
+        "label": "EN",
+        "kind": "net",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 400,
+        "y": 1420
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__C9",
+        "label": "C9 10uF",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 400,
+        "y": 1500
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__C8",
+        "label": "C8 100nF",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 460,
+        "y": 1500
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__ch340_dtr",
+        "label": "CH340 DTR#",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 200,
+        "y": 1600
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__U11",
+        "label": "U11 10k",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 300,
+        "y": 1600
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__Q8",
+        "label": "Q8 2N3904",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 400,
+        "y": 1600
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__R5",
+        "label": "R5 10k IO0 pull-up",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 220,
+        "y": 1700
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__io0",
+        "label": "IO0",
+        "kind": "net",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 400,
+        "y": 1700
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__ch340_rts",
+        "label": "CH340 RTS#",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 200,
+        "y": 1780
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__U12",
+        "label": "U12 10k",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 300,
+        "y": 1780
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__Q9",
+        "label": "Q9 2N3904",
+        "kind": "component",
+        "parent": "group:autoreset"
+      },
+      "position": {
+        "x": 400,
+        "y": 1780
+      }
+    },
+    {
+      "data": {
+        "id": "group:pwrkey",
+        "label": "LTE_PWRKEY driver",
+        "kind": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__3v3",
+        "label": "3V3",
+        "kind": "net",
+        "parent": "group:pwrkey"
+      },
+      "position": {
+        "x": 40,
+        "y": 2160
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__R_pullup",
+        "label": "100k pull-up",
+        "kind": "component",
+        "parent": "group:pwrkey"
+      },
+      "position": {
+        "x": 220,
+        "y": 2160
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__pwrkey",
+        "label": "PWRKEY",
+        "kind": "net",
+        "parent": "group:pwrkey"
+      },
+      "position": {
+        "x": 400,
+        "y": 2160
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__lte_pwrkey_gpio",
+        "label": "ESP32 LTE_PWRKEY GPIO",
+        "kind": "component",
+        "parent": "group:pwrkey"
+      },
+      "position": {
+        "x": 40,
+        "y": 2260
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__R6",
+        "label": "R6 4.7k",
+        "kind": "component",
+        "parent": "group:pwrkey"
+      },
+      "position": {
+        "x": 220,
+        "y": 2260
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__Q5",
+        "label": "Q5 2N3904",
+        "kind": "component",
+        "parent": "group:pwrkey"
+      },
+      "position": {
+        "x": 400,
+        "y": 2260
+      }
+    },
+    {
+      "data": {
+        "id": "group:haptics",
+        "label": "Buzzer / vibration motor",
+        "kind": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__vbat_lte",
+        "label": "VBAT_LTE",
+        "kind": "net",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 40,
+        "y": 2860
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__D2",
+        "label": "D2 1N4148WS",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 200,
+        "y": 2860
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__buzz_hi",
+        "label": "Buzzer high side",
+        "kind": "net",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 360,
+        "y": 2860
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__R_buzz_esr",
+        "label": "Piezo ESR 32R",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 520,
+        "y": 2860
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__q7_coll",
+        "label": "Buzzer drive node",
+        "kind": "net",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 680,
+        "y": 2860
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__C_buzz",
+        "label": "Piezo C 15nF",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 680,
+        "y": 2940
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__buzzer_pwm",
+        "label": "BUZZER_PWM (GPIO)",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 360,
+        "y": 2980
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__R14",
+        "label": "R14 1k",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 520,
+        "y": 2980
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__Q7",
+        "label": "Q7 2N3904",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 680,
+        "y": 2980
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__3v3",
+        "label": "3V3",
+        "kind": "net",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 40,
+        "y": 3080
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__R_motor",
+        "label": "Motor coil 45R",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 220,
+        "y": 3080
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__q6_coll",
+        "label": "Motor drive node",
+        "kind": "net",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 400,
+        "y": 3080
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__D1",
+        "label": "D1 flyback",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 300,
+        "y": 3020
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__vib_motor",
+        "label": "VIB_MOTOR (GPIO/IO0)",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 40,
+        "y": 3160
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__R13",
+        "label": "R13 1k",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 220,
+        "y": 3160
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__Q6",
+        "label": "Q6 2N3904",
+        "kind": "component",
+        "parent": "group:haptics"
+      },
+      "position": {
+        "x": 400,
+        "y": 3160
+      }
+    },
+    {
+      "data": {
+        "id": "group:leds",
+        "label": "LED networks",
+        "kind": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__3v3",
+        "label": "3V3",
+        "kind": "net",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 40,
+        "y": 3560
+      }
+    },
+    {
+      "data": {
+        "id": "leds__R_series_LED1_red",
+        "label": "1k series R (LED1_red)",
+        "kind": "component",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 220,
+        "y": 3560
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED1_red_a",
+        "label": "LED1_red anode",
+        "kind": "net",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 220,
+        "y": 3640
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED1_red",
+        "label": "LED1 red",
+        "kind": "component",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 220,
+        "y": 3720
+      }
+    },
+    {
+      "data": {
+        "id": "leds__R_series_LED2_blue",
+        "label": "1k series R (LED2_blue)",
+        "kind": "component",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 380,
+        "y": 3560
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED2_blue_a",
+        "label": "LED2_blue anode",
+        "kind": "net",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 380,
+        "y": 3640
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED2_blue",
+        "label": "LED2 blue",
+        "kind": "component",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 380,
+        "y": 3720
+      }
+    },
+    {
+      "data": {
+        "id": "leds__R_series_LED3_green",
+        "label": "1k series R (LED3_green)",
+        "kind": "component",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 540,
+        "y": 3560
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED3_green_a",
+        "label": "LED3_green anode",
+        "kind": "net",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 540,
+        "y": 3640
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED3_green",
+        "label": "LED3 green",
+        "kind": "component",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 540,
+        "y": 3720
+      }
+    },
+    {
+      "data": {
+        "id": "leds__R_series_LED4_white",
+        "label": "1k series R (LED4_white)",
+        "kind": "component",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 700,
+        "y": 3560
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED4_white_a",
+        "label": "LED4_white anode",
+        "kind": "net",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 700,
+        "y": 3640
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED4_white",
+        "label": "LED4 white",
+        "kind": "component",
+        "parent": "group:leds"
+      },
+      "position": {
+        "x": 700,
+        "y": 3720
+      }
+    },
+    {
+      "data": {
+        "id": "group:usb_cc",
+        "label": "USB-C CC termination",
+        "kind": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__vbus_host",
+        "label": "Host VBUS (5V)",
+        "kind": "net",
+        "parent": "group:usb_cc"
+      },
+      "position": {
+        "x": 40,
+        "y": 4260
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__R_host_rp1",
+        "label": "Host Rp (CC1)",
+        "kind": "component",
+        "parent": "group:usb_cc"
+      },
+      "position": {
+        "x": 220,
+        "y": 4260
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__cc1",
+        "label": "CC1",
+        "kind": "net",
+        "parent": "group:usb_cc"
+      },
+      "position": {
+        "x": 400,
+        "y": 4260
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__R2",
+        "label": "R2 5.1k",
+        "kind": "component",
+        "parent": "group:usb_cc"
+      },
+      "position": {
+        "x": 560,
+        "y": 4260
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__R_host_rp2",
+        "label": "Host Rp (CC2)",
+        "kind": "component",
+        "parent": "group:usb_cc"
+      },
+      "position": {
+        "x": 220,
+        "y": 4340
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__cc2",
+        "label": "CC2",
+        "kind": "net",
+        "parent": "group:usb_cc"
+      },
+      "position": {
+        "x": 400,
+        "y": 4340
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__R3",
+        "label": "R3 5.1k",
+        "kind": "component",
+        "parent": "group:usb_cc"
+      },
+      "position": {
+        "x": 560,
+        "y": 4340
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "power_tree__battery--U5",
+        "source": "power_tree__battery",
+        "target": "power_tree__U5",
+        "label": "BATT_RAW"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__U5--vbus_5v",
+        "source": "power_tree__U5",
+        "target": "power_tree__vbus_5v"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__vbus_5v--C4",
+        "source": "power_tree__vbus_5v",
+        "target": "power_tree__C4"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__vbus_5v--C5",
+        "source": "power_tree__vbus_5v",
+        "target": "power_tree__C5"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__vbus_5v--C6",
+        "source": "power_tree__vbus_5v",
+        "target": "power_tree__C6"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__vbus_5v--U6",
+        "source": "power_tree__vbus_5v",
+        "target": "power_tree__U6"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__U6--3v3",
+        "source": "power_tree__U6",
+        "target": "power_tree__3v3"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__3v3--C7",
+        "source": "power_tree__3v3",
+        "target": "power_tree__C7"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__3v3--U2",
+        "source": "power_tree__3v3",
+        "target": "power_tree__U2"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__3v3--U3",
+        "source": "power_tree__3v3",
+        "target": "power_tree__U3"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__3v3--U4",
+        "source": "power_tree__3v3",
+        "target": "power_tree__U4"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__3v3--U7",
+        "source": "power_tree__3v3",
+        "target": "power_tree__U7"
+      }
+    },
+    {
+      "data": {
+        "id": "power_tree__3v3--U10",
+        "source": "power_tree__3v3",
+        "target": "power_tree__U10"
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__battery--D2",
+        "source": "modem_burst__battery",
+        "target": "modem_burst__D2"
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__D2--vbat_lte",
+        "source": "modem_burst__D2",
+        "target": "modem_burst__vbat_lte"
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__vbat_lte--C11",
+        "source": "modem_burst__vbat_lte",
+        "target": "modem_burst__C11"
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__vbat_lte--C12",
+        "source": "modem_burst__vbat_lte",
+        "target": "modem_burst__C12"
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__vbat_lte--C13",
+        "source": "modem_burst__vbat_lte",
+        "target": "modem_burst__C13"
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__vbat_lte--idle_load",
+        "source": "modem_burst__vbat_lte",
+        "target": "modem_burst__idle_load"
+      }
+    },
+    {
+      "data": {
+        "id": "modem_burst__vbat_lte--burst_load",
+        "source": "modem_burst__vbat_lte",
+        "target": "modem_burst__burst_load"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__3v3--R4",
+        "source": "autoreset__3v3",
+        "target": "autoreset__R4"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__R4--en",
+        "source": "autoreset__R4",
+        "target": "autoreset__en"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__en--C9",
+        "source": "autoreset__en",
+        "target": "autoreset__C9"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__en--C8",
+        "source": "autoreset__en",
+        "target": "autoreset__C8"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__ch340_dtr--U11",
+        "source": "autoreset__ch340_dtr",
+        "target": "autoreset__U11"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__U11--Q8",
+        "source": "autoreset__U11",
+        "target": "autoreset__Q8"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__Q8--en",
+        "source": "autoreset__Q8",
+        "target": "autoreset__en"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__3v3--R5",
+        "source": "autoreset__3v3",
+        "target": "autoreset__R5"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__R5--io0",
+        "source": "autoreset__R5",
+        "target": "autoreset__io0"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__ch340_rts--U12",
+        "source": "autoreset__ch340_rts",
+        "target": "autoreset__U12"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__U12--Q9",
+        "source": "autoreset__U12",
+        "target": "autoreset__Q9"
+      }
+    },
+    {
+      "data": {
+        "id": "autoreset__Q9--io0",
+        "source": "autoreset__Q9",
+        "target": "autoreset__io0"
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__3v3--R_pullup",
+        "source": "pwrkey__3v3",
+        "target": "pwrkey__R_pullup"
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__R_pullup--pwrkey",
+        "source": "pwrkey__R_pullup",
+        "target": "pwrkey__pwrkey"
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__lte_pwrkey_gpio--R6",
+        "source": "pwrkey__lte_pwrkey_gpio",
+        "target": "pwrkey__R6"
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__R6--Q5",
+        "source": "pwrkey__R6",
+        "target": "pwrkey__Q5"
+      }
+    },
+    {
+      "data": {
+        "id": "pwrkey__Q5--pwrkey",
+        "source": "pwrkey__Q5",
+        "target": "pwrkey__pwrkey"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__vbat_lte--D2",
+        "source": "haptics__vbat_lte",
+        "target": "haptics__D2"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__D2--buzz_hi",
+        "source": "haptics__D2",
+        "target": "haptics__buzz_hi"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__buzz_hi--R_buzz_esr",
+        "source": "haptics__buzz_hi",
+        "target": "haptics__R_buzz_esr"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__R_buzz_esr--q7_coll",
+        "source": "haptics__R_buzz_esr",
+        "target": "haptics__q7_coll"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__q7_coll--C_buzz",
+        "source": "haptics__q7_coll",
+        "target": "haptics__C_buzz"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__buzzer_pwm--R14",
+        "source": "haptics__buzzer_pwm",
+        "target": "haptics__R14"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__R14--Q7",
+        "source": "haptics__R14",
+        "target": "haptics__Q7"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__Q7--q7_coll",
+        "source": "haptics__Q7",
+        "target": "haptics__q7_coll"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__3v3--R_motor",
+        "source": "haptics__3v3",
+        "target": "haptics__R_motor"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__R_motor--q6_coll",
+        "source": "haptics__R_motor",
+        "target": "haptics__q6_coll"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__q6_coll--D1",
+        "source": "haptics__q6_coll",
+        "target": "haptics__D1"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__D1--3v3",
+        "source": "haptics__D1",
+        "target": "haptics__3v3"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__vib_motor--R13",
+        "source": "haptics__vib_motor",
+        "target": "haptics__R13"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__R13--Q6",
+        "source": "haptics__R13",
+        "target": "haptics__Q6"
+      }
+    },
+    {
+      "data": {
+        "id": "haptics__Q6--q6_coll",
+        "source": "haptics__Q6",
+        "target": "haptics__q6_coll"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__3v3--R_series_LED1_red",
+        "source": "leds__3v3",
+        "target": "leds__R_series_LED1_red"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__R_series_LED1_red--LED1_red_a",
+        "source": "leds__R_series_LED1_red",
+        "target": "leds__LED1_red_a"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED1_red_a--LED1_red",
+        "source": "leds__LED1_red_a",
+        "target": "leds__LED1_red"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__3v3--R_series_LED2_blue",
+        "source": "leds__3v3",
+        "target": "leds__R_series_LED2_blue"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__R_series_LED2_blue--LED2_blue_a",
+        "source": "leds__R_series_LED2_blue",
+        "target": "leds__LED2_blue_a"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED2_blue_a--LED2_blue",
+        "source": "leds__LED2_blue_a",
+        "target": "leds__LED2_blue"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__3v3--R_series_LED3_green",
+        "source": "leds__3v3",
+        "target": "leds__R_series_LED3_green"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__R_series_LED3_green--LED3_green_a",
+        "source": "leds__R_series_LED3_green",
+        "target": "leds__LED3_green_a"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED3_green_a--LED3_green",
+        "source": "leds__LED3_green_a",
+        "target": "leds__LED3_green"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__3v3--R_series_LED4_white",
+        "source": "leds__3v3",
+        "target": "leds__R_series_LED4_white"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__R_series_LED4_white--LED4_white_a",
+        "source": "leds__R_series_LED4_white",
+        "target": "leds__LED4_white_a"
+      }
+    },
+    {
+      "data": {
+        "id": "leds__LED4_white_a--LED4_white",
+        "source": "leds__LED4_white_a",
+        "target": "leds__LED4_white"
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__vbus_host--R_host_rp1",
+        "source": "usb_cc__vbus_host",
+        "target": "usb_cc__R_host_rp1"
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__R_host_rp1--cc1",
+        "source": "usb_cc__R_host_rp1",
+        "target": "usb_cc__cc1"
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__cc1--R2",
+        "source": "usb_cc__cc1",
+        "target": "usb_cc__R2"
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__vbus_host--R_host_rp2",
+        "source": "usb_cc__vbus_host",
+        "target": "usb_cc__R_host_rp2"
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__R_host_rp2--cc2",
+        "source": "usb_cc__R_host_rp2",
+        "target": "usb_cc__cc2"
+      }
+    },
+    {
+      "data": {
+        "id": "usb_cc__cc2--R3",
+        "source": "usb_cc__cc2",
+        "target": "usb_cc__R3"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "summary": {
+    "vbat_nominal": 3.85,
+    "vbus_5v": 5.0,
+    "v3v3": 3.274671901330437,
+    "total_3v3_current_ma": 283.6
+  },
+  "plot_url": null,
+  "overlay": {
+    "power_tree__battery": 3.85,
+    "power_tree__vbus_5v": 5.0,
+    "power_tree__3v3": 3.274671901330437
+  }
+}

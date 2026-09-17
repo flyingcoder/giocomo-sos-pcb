@@ -1,0 +1,86 @@
+{
+  "overall_score": 79.3,
+  "verdict": "Likely to work, some margins are tight",
+  "checks": [
+    {
+      "id": "vbat_lte_sag",
+      "analysis": "modem_burst",
+      "label": "VBAT_LTE TX-burst sag",
+      "weight": 3.0,
+      "score_pct": 0.0,
+      "detail": "VBAT_LTE min during TX burst = 1.90 V (typical single-cell modem brownout floor ~3.0 V)"
+    },
+    {
+      "id": "led_currents",
+      "analysis": "led",
+      "label": "LED forward currents",
+      "weight": 1.0,
+      "score_pct": 48.5,
+      "detail": "LED1_red=1.27mA, LED2_blue=0.29mA, LED3_green=1.18mA, LED4_white=0.29mA"
+    },
+    {
+      "id": "vbus_5v",
+      "analysis": "power_tree",
+      "label": "VBUS_5V regulation",
+      "weight": 2.0,
+      "score_pct": 100.0,
+      "detail": "VBUS_5V = 5.00 V (target 5.00 V \u00b15%)"
+    },
+    {
+      "id": "v3v3",
+      "analysis": "power_tree",
+      "label": "3V3 regulation",
+      "weight": 3.0,
+      "score_pct": 100.0,
+      "detail": "3V3 = 3.27 V (target 3.30 V \u00b15%)"
+    },
+    {
+      "id": "en_low",
+      "analysis": "autoreset",
+      "label": "EN reset assertion",
+      "weight": 2.0,
+      "score_pct": 100.0,
+      "detail": "EN min = 0.04 V (must pull well below ~1 V to reliably reset)"
+    },
+    {
+      "id": "io0_low",
+      "analysis": "autoreset",
+      "label": "IO0 boot-strap assertion",
+      "weight": 1.5,
+      "score_pct": 100.0,
+      "detail": "IO0 min = 0.03 V (must pull well below ~1 V to enter download mode)"
+    },
+    {
+      "id": "pwrkey_pulse",
+      "analysis": "pwrkey",
+      "label": "LTE_PWRKEY low-pulse width",
+      "weight": 2.5,
+      "score_pct": 100.0,
+      "detail": "PWRKEY held low for 151 ms (SIMCom spec requires >=100 ms)"
+    },
+    {
+      "id": "usb_cc_bands",
+      "analysis": "usb_cc",
+      "label": "USB-C CC termination bands",
+      "weight": 1.0,
+      "score_pct": 100.0,
+      "detail": "host Rp=56k: 0.42 V; host Rp=22k: 0.94 V; host Rp=10k: 1.69 V"
+    },
+    {
+      "id": "buzzer_swing",
+      "analysis": "haptics",
+      "label": "Buzzer drive swing",
+      "weight": 0.5,
+      "score_pct": 100.0,
+      "detail": "Buzzer drive swing = 3.64 V"
+    },
+    {
+      "id": "motor_swing",
+      "analysis": "haptics",
+      "label": "Motor drive swing",
+      "weight": 0.5,
+      "score_pct": 100.0,
+      "detail": "Motor drive swing = 3.11 V"
+    }
+  ]
+}

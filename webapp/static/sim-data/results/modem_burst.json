@@ -1,0 +1,11 @@
+{
+  "summary": {
+    "v_idle": 3.0693139857276037,
+    "v_min": 1.8973534208269809,
+    "sag_mv": 1171.9605649006228
+  },
+  "plot_url": "plots/modem_burst.png",
+  "overlay": {
+    "modem_burst__vbat_lte": 1.8973534208269809
+  }
+}

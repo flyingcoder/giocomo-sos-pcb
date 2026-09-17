@@ -1,0 +1,13 @@
+{
+  "summary": {
+    "buzz_min": 0.20745486607183583,
+    "buzz_max": 3.8499214991143633,
+    "motor_min": 0.18985649738406402,
+    "motor_max": 3.303641165975856
+  },
+  "plot_url": "plots/haptics.png",
+  "overlay": {
+    "haptics__q7_coll": 3.8499214991143633,
+    "haptics__q6_coll": 3.303641165975856
+  }
+}
