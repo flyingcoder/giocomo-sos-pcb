@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giacomo PCB — interactive simulator</title>
+  <script src="https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Giacomo PCB — interactive simulator</h1>
+    <p class="subtitle">
+      PySpice/ngspice analog subsystems, run with adjustable parameters.
+      Read-only schematic — no netlist editing.
+    </p>
+  </header>
+
+  <section id="score-panel">
+    <div class="score-header">
+      <button id="score-btn" type="button">Compute board health score</button>
+      <div id="score-summary" class="hidden">
+        <span id="score-value">--%</span>
+        <span id="score-verdict"></span>
+      </div>
+    </div>
+    <p class="score-caveat">
+      Heuristic margin score against typical-operation thresholds, computed
+      from all 7 analyses at their nominal/default parameters — not a
+      certified reliability estimate.
+    </p>
+    <div id="score-bar-track" class="hidden"><div id="score-bar-fill"></div></div>
+    <ul id="score-checks" class="hidden"></ul>
+  </section>
+
+  <nav id="tabs" aria-label="Analysis selector"></nav>
+
+  <main>
+    <section id="schematic-panel">
+      <div id="cy"></div>
+      <div id="tooltip" class="tooltip hidden"></div>
+    </section>
+
+    <section id="control-panel">
+      <form id="param-form"></form>
+      <button id="run-btn" type="button">Run</button>
+      <div id="error-box" class="error hidden"></div>
+      <div id="results">
+        <pre id="summary-text"></pre>
+        <img id="result-plot" class="hidden" alt="Waveform plot">
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
