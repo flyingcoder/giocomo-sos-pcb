@@ -2,7 +2,7 @@
 """Unified read-only dashboard for the Giacomo PCB project.
 
 Single place to browse everything produced about this EasyEDA export:
-every analysis markdown doc (including the root-level accuracy feedback
+every analysis markdown doc (including the root-level design feedback
 and the simulation notes), the raw source JSON files, the four schematic
 screenshots, the mermaid diagram page, and a live embed of the PySpice
 circuit-simulation webapp.

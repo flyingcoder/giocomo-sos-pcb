@@ -24,7 +24,7 @@ giacomo-pcb-layout.json         Exported EasyEDA PCB layout (footprints, layers,
 giacomo-project-manifest.json   EasyEDA project/document metadata
 schematic-view-*.jpeg           Screenshots of the four schematic sheets/regions
 analysis/                       Written analysis of the design (see below)
-ANALYSIS_FEEDBACK.md            Independent accuracy audit of analysis/
+DESIGN_FEEDBACK.md              Plain-English design review (schematic/PCB/BOM) backed by simulator evidence
 simulation/                     PySpice model of the board's analog/discrete circuits
 webapp/                         Read-only dashboard over everything in this repo
 ```
@@ -43,9 +43,12 @@ project rather than a codebase:
 | [05-pcb-layout-analysis.md](analysis/05-pcb-layout-analysis.md) | Board file status: layers, DRC rules, routing progress |
 | [06-images.md](analysis/06-images.md) | What each JPEG in the folder actually shows |
 
-[ANALYSIS_FEEDBACK.md](ANALYSIS_FEEDBACK.md) is a claim-by-claim audit of
-those six documents against the raw JSON — overall verdict: approved, no
-critical/high-severity errors.
+[DESIGN_FEEDBACK.md](DESIGN_FEEDBACK.md) is a plain-English review of the
+*design itself* — schematic, PCB layout, and BOM — checked directly against
+the raw JSON rather than against the six documents above, and backed by
+evidence from running the board through the circuit simulator (see
+`simulation/` below). Read this first if you want the "will it work"
+answer.
 
 **Board status:** every schematic component has a footprint placed on the
 PCB, but the board is effectively unrouted (one copper track total) — this
@@ -105,4 +108,4 @@ the embedded Circuit Simulation tab to work.
 authoritative source of truth for nets, components, and layout — the BOM
 copy embedded in `giacomo-project-manifest.json` is a stale, incomplete
 snapshot and should not be used (see
-[ANALYSIS_FEEDBACK.md](ANALYSIS_FEEDBACK.md)).
+[DESIGN_FEEDBACK.md](DESIGN_FEEDBACK.md)).

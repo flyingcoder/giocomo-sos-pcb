@@ -17,9 +17,9 @@ DOCS = {
         "path": ROOT / "analysis" / "README.md",
     },
     "feedback": {
-        "title": "Analysis Accuracy Feedback",
+        "title": "Design Feedback",
         "group": "Overview",
-        "path": ROOT / "ANALYSIS_FEEDBACK.md",
+        "path": ROOT / "DESIGN_FEEDBACK.md",
     },
     "inventory": {
         "title": "01 · Folder Inventory",
