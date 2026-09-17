@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giacomo — Project Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰ Sheets</button>
+<div class="shell" id="shell">
+
+  <aside class="sidebar" aria-label="Project navigation">
+    <div class="brand">
+      <span class="eyebrow">EasyEDA Export · Read-only</span>
+      <h1>Giacomo</h1>
+      <p class="sub">SOS panic-button wearable — project dashboard</p>
+    </div>
+
+    <div class="nav-filter">
+      <input type="search" id="nav-search" placeholder="Filter sheets…" aria-label="Filter navigation">
+    </div>
+
+    <nav id="nav"></nav>
+
+    <div class="sidebar-footer">
+      <button id="theme-toggle" type="button" aria-label="Toggle color theme">
+        <span class="dot"></span><span id="theme-label">Auto theme</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="content" id="content" tabindex="-1">
+    <div class="empty">Loading…</div>
+  </main>
+
+  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+</div>
+
+<script id="nav-data" type="application/json">{{ nav_json | safe }}</script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
